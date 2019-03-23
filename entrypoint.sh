@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/ash
 
-# Persistent host keys in /srv
-/usr/bin/ssh-keygen -A > /dev/null
+/usr/bin/ssh-keygen -A
 
 for f in /etc/ssh/*_key*
 do
@@ -16,8 +15,6 @@ do
 done
 
 echo ${AUTHORIZED_KEYS} > /home/docker/.ssh/authorized_keys
-
-set -e
 
 if [ ! -d "/var/run/sshd" ]; then
   mkdir -p /var/run/sshd

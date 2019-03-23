@@ -3,12 +3,10 @@ LABEL "pl.scrlk"="Scroll-Lock"
 
 ENV AUTHORIZED_KEYS ""
 
-RUN apk add --no-cache --update \
-  openrc \
-  openssh
-RUN rc-update add sshd default
-RUN sed -i 's/^#GatewayPorts no/GatewayPorts yes/' /etc/ssh/sshd_config
 COPY ./sshd_config /etc/ssh/sshd_config
+COPY ./entrypoint.sh /usr/local/bin/
+
+RUN apk add --no-cache --update openssh
 
 RUN addgroup docker \
   && adduser -D -G docker -h /home/docker -s /bin/false docker
@@ -20,11 +18,6 @@ RUN mkdir .ssh \
  && chmod 600 .ssh/authorized_keys \
  && chown -R docker:docker .
 
-COPY ./server.sh /usr/local/bin/
-
-VOLUME [ "/srv" ]
-
-ENTRYPOINT server.sh
-CMD ["/usr/sbin/sshd","-D"]
-
+ENTRYPOINT [ "entrypoint.sh" ]
+CMD [ "/usr/sbin/sshd", "-D", "-e" ]
 EXPOSE 22
