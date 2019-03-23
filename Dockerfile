@@ -3,8 +3,8 @@ LABEL "pl.scrlk"="Scroll-Lock"
 
 ENV AUTHORIZED_KEYS ""
 
+ADD ./entrypoint.sh /usr/local/bin/
 COPY ./sshd_config /etc/ssh/sshd_config
-COPY ./entrypoint.sh /usr/local/bin/
 
 RUN apk add --no-cache --update openssh
 
@@ -18,6 +18,6 @@ RUN mkdir .ssh \
  && chmod 600 .ssh/authorized_keys \
  && chown -R docker:docker .
 
-ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 CMD [ "/usr/sbin/sshd", "-D", "-e" ]
 EXPOSE 22
