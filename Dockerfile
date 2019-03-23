@@ -10,7 +10,7 @@ RUN apk add --no-cache --update openssh
 
 RUN addgroup docker \
   && adduser -D -G docker -h /home/docker -s /bin/false docker \
-  && usermod -p "*" docker
+  && echo "docker:docker" | chpasswd
 
 WORKDIR /home/docker
 RUN mkdir .ssh \
