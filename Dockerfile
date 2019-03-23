@@ -28,10 +28,3 @@ ENTRYPOINT ["server.sh"]
 CMD ["/usr/sbin/sshd","-D"]
 
 EXPOSE 22
-
-# Match User tunusr
-#   PermitOpen 127.0.0.1:12345 (?)
-#   AllowTcpForwarding yes
-#   X11Forwarding no
-#   AllowAgentForwarding no
-#   ForceCommand /bin/false
