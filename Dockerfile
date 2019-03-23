@@ -24,7 +24,7 @@ COPY ./server.sh /usr/local/bin/
 
 VOLUME [ "/srv" ]
 
-ENTRYPOINT ["server.sh"]
+ENTRYPOINT server.sh
 CMD ["/usr/sbin/sshd","-D"]
 
 EXPOSE 22
