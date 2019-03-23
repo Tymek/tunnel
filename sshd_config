@@ -1,0 +1,8 @@
+Match User docker
+  PermitOpen 127.0.0.1:8001
+  PermitOpen 127.0.0.1:8002
+  PermitOpen 127.0.0.1:8003
+  AllowTcpForwarding yes
+  X11Forwarding no
+  AllowAgentForwarding no
+  ForceCommand /bin/false
