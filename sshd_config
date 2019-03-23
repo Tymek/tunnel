@@ -1,6 +1,7 @@
+PasswordAuthentication no
+ChallengeResponseAuthentication no
 GatewayPorts yes
 AllowTcpForwarding yes
-Match User docker
-  X11Forwarding no
-  AllowAgentForwarding no
-  ForceCommand /bin/false
+X11Forwarding no
+AllowAgentForwarding no
+ForceCommand /bin/false

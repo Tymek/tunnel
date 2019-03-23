@@ -9,7 +9,8 @@ COPY ./sshd_config /etc/ssh/sshd_config
 RUN apk add --no-cache --update openssh
 
 RUN addgroup docker \
-  && adduser -D -G docker -h /home/docker -s /bin/false docker
+  && adduser -D -G docker -h /home/docker -s /bin/false docker \
+  && usermod -p "*" docker
 
 WORKDIR /home/docker
 RUN mkdir .ssh \
