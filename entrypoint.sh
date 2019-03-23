@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/sh
 
 /usr/bin/ssh-keygen -A
 

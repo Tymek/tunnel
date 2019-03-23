@@ -18,6 +18,6 @@ RUN mkdir .ssh \
  && chmod 600 .ssh/authorized_keys \
  && chown -R docker:docker .
 
-ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
+ENTRYPOINT [ "sh", "/usr/local/bin/entrypoint.sh" ]
 CMD [ "/usr/sbin/sshd", "-D", "-e" ]
 EXPOSE 22
