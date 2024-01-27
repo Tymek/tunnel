@@ -1,4 +1,4 @@
-FROM alpine:3.18.2
+FROM alpine:3.19.1
 LABEL "pl.scrlk"="Scroll-Lock"
 
 ENV AUTHORIZED_KEYS ""
